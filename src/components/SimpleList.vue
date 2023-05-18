@@ -42,8 +42,6 @@ const filterData = async (): Promise<CombinedNamesNumbers[]> => {
   const duplicateElements = toFindDuplicates(email);
   const uniq = email.filter((item) => !duplicateElements.includes(item));
 
-  console.log(email, duplicateElements, uniq);
-
   const noDuplicateEmailNames = await emailNames.filter((item) =>
     uniq.includes(item.email)
   );
@@ -73,33 +71,6 @@ onMounted(async () => {
 </script>
 
 <template>
-  <!-- <div class="relative overflow-x-auto">
-    <table class="w-full text-sm text-left text-gray-500">
-      <thead class="text-xs text-gray-700 uppercase bg-blue-400">
-        <tr>
-          <th scope="col" class="px-6 py-3">Name</th>
-          <th scope="col" class="px-6 py-3">Email</th>
-          <th scope="col" class="px-6 py-3">CC Number</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr
-          v-for="(item, i) in filteredData"
-          :key="i"
-          class="bg-blue-200 border-b"
-        >
-          <th
-            scope="row"
-            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-          >
-            {{ item.first_name + " " + item.last_name }}
-          </th>
-          <td class="px-6 py-4">{{ item.email }}</td>
-          <td class="px-6 py-4">{{ item.cc_number }}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div> -->
   <div class="w-full flex gap-2 flex-col text-gray-50">
     <div
       v-for="(item, i) in filteredData"
